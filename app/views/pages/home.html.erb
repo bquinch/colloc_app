@@ -1,7 +1,15 @@
 <div class="row">
   <div class="col-10">
     <h1>Colloc'App</h1>
-    <%= link_to 'Voir mon appartement', flat_path(current_user.flat) %>
-    <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
+    <% if user_signed_in? && current_user.flat_user %>
+      <p><%= link_to 'Voir mon appartement', flat_path(current_user.flat) %></p>
+      <p><%= link_to 'Mon Profil', user_path(current_user) %>
+    <% elsif user_signed_in? %>
+      <p><%= link_to 'Rejoindre un appartement', new_flat_user_path %></p>
+      <p><%= link_to 'Créer un appartement', new_flat_path %></p>
+      <p><%= link_to 'Mon Profil', user_path(current_user) %>
+    <% else %>
+      <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
+    <% end %>
   </div>
 </div>

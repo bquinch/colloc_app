@@ -13,9 +13,11 @@ class FlatsController < ApplicationController
 
   def create
     @flat = Flat.new(flat_params)
-    @flat.flat_code = create_flat_code
+    @flat_code = create_flat_code
+    @flat.flat_code = @flat_code
     @flat.user = current_user
     if @flat.save
+      @current_user.flat_user = FlatUser.create(flat_code: @flat_code, flat: @flat, user: @current_user, owner: true)
       redirect_to flat_path(@flat), notice: 'Appartement créé'
     else
       render :new, notice: "Erreur lors de la création de la création de l'appartement"
@@ -56,7 +58,7 @@ class FlatsController < ApplicationController
   end
 
   def set_flat
-    @flat = Flat.find(params(:id))
+    @flat = Flat.find(params[:id])
   end
 
   def authorize_user

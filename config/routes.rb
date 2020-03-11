@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   resources :users, only: %I[index show]
   resources :flats do
-    resources :flat_users, only: %I[index new create]
+    resources :flat_users, only: %I[index]
   end
 
-  resources :flat_users, only: %I[show edit update destroy]
+  resources :flat_users, only: %I[show new create edit update destroy]
 end
