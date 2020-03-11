@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="row">
+  <div class="col-10">
+    <h1>Colloc'App</h1>
+    <%= link_to 'Voir mon appartement', flat_path(current_user.flat) %>
+    <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
+  </div>
+</div>
