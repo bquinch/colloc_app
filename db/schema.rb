@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_11_165919) do
+ActiveRecord::Schema.define(version: 2020_03_12_190001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.text "description"
+    t.string "address"
+    t.string "title"
+    t.date "date"
+    t.time "time"
+    t.bigint "flat_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flat_user_id"], name: "index_events_on_flat_user_id"
+  end
 
   create_table "flat_users", force: :cascade do |t|
     t.bigint "flat_id"
@@ -37,6 +49,33 @@ ActiveRecord::Schema.define(version: 2020_03_11_165919) do
     t.index ["user_id"], name: "index_flats_on_user_id"
   end
 
+  create_table "note_answers", force: :cascade do |t|
+    t.string "content"
+    t.bigint "flat_user_id"
+    t.bigint "note_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flat_user_id"], name: "index_note_answers_on_flat_user_id"
+    t.index ["note_id"], name: "index_note_answers_on_note_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "content"
+    t.bigint "flat_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flat_user_id"], name: "index_notes_on_flat_user_id"
+  end
+
+  create_table "participations", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "flat_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_participations_on_event_id"
+    t.index ["flat_user_id"], name: "index_participations_on_flat_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -51,7 +90,13 @@ ActiveRecord::Schema.define(version: 2020_03_11_165919) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "flat_users"
   add_foreign_key "flat_users", "flats"
   add_foreign_key "flat_users", "users"
   add_foreign_key "flats", "users"
+  add_foreign_key "note_answers", "flat_users"
+  add_foreign_key "note_answers", "notes"
+  add_foreign_key "notes", "flat_users"
+  add_foreign_key "participations", "events"
+  add_foreign_key "participations", "flat_users"
 end
