@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :flats
   has_one :flat_user
   has_one :flat, through: :flat_user
+  validates_presence_of :first_name, :last_name
 end
