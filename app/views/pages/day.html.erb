@@ -1,0 +1,10 @@
+<h1><%= @date.to_date.day %> <%= I18n.t("date.month_names")[@date.to_date.month] %> <%= @date.to_date.year %></h1>
+<% if @events.nil? %>
+  <p>Pas d'évènement ce jour</p>
+<% end %>
+<% @events.each do |event| %>
+  <% if event.flat_user.flat == @flat %>
+    <p><%= event.title %> à <%= event.time.strftime("%Hh%M") %></p>
+  <% end %>
+<% end %>
+<%= link_to 'Nouvel Évènement', new_event_path %>

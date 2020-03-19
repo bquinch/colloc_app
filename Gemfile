@@ -8,6 +8,7 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.4'
 gem 'redis'
+gem "simple_calendar", "~> 2.0"
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.12.0'
@@ -16,6 +17,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'factory_bot'
+gem 'rails-i18n'
+gem 'devise-i18n'
 
 gem 'rspec-rails', group: [ :test ]
 

@@ -1,0 +1,15 @@
+<h1><%= @event.title %></h1>
+<p><%= @event.description %></p>
+<p><%= @event.address %></p>
+<p><%= @event.date %></p>
+<p><%= @event.time %></p>
+<% participation = @event.participations.find_by(:flat_user == current_user.flat_user) %>
+<% if !participation.nil? %>
+  <%= link_to 'Cancel Participation', participation_path(participation), method: :delete %>
+<% else %>
+  <%= simple_form_for [@event, @participation] do |f| %>
+    <%= f.submit 'Participate' %>
+  <% end %>
+<% end %>
+<%= link_to "Retour à l'appartement", flat_path(@event.flat_user.flat) %>
+

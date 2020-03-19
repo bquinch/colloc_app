@@ -12,7 +12,8 @@ class FlatUsersController < ApplicationController
       @flat_user.save
       redirect_to flat_path(@flat), notice: "Vous avez bien été ajouté à cet appartement"
     else
-      render :new, alert: 'Code invalide'
+      flash[:alert] = 'Code invalide'
+      render :new
     end
   end
 

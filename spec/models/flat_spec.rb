@@ -1,12 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Flat, type: :model do
+  let(:basile) do
+    User.create!(
+      first_name: "Basile",
+      last_name: "Quinchon",
+      email: "basile@quinchon.com",
+      password: "123456"
+    )
+  end
+
   let(:valid_attributes) do
     {
       title: 'My Flat',
       description: 'Super',
       address: '13 allée des Eiders, 75019 Paris',
-      flat_code: 'ABC123A'
+      flat_code: 'ABC123A',
+      user: basile
     }
   end
 
@@ -44,5 +54,10 @@ RSpec.describe Flat, type: :model do
     flat = Flat.new(valid_attributes)
     expect(flat).to respond_to(:flat_users)
     expect(flat.flat_users.count).to eq(0)
+  end
+
+  it "belongs to a user" do
+    flat = Flat.new(valid_attributes)
+    expect(flat.user).to eq(basile)
   end
 end

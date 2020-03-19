@@ -1,0 +1,12 @@
+<h1><%= @note.flat_user.user.first_name %>'s note</h1>
+<p><%= @note.content %></p>
+<% @note_answers.each do |note_answer| %>
+  <h1><%= note_answer.flat_user.user.first_name %>'s response</h1>
+  <p><%= note_answer.content %></p>
+<% end %>
+<%= simple_form_for [@note, @note_answer] do |f| %>
+  <%= f.input :content, placeholder: 'Réponse...', label: false %>
+  <%= f.submit 'Répondre' %>
+<% end %>
+
+<%= link_to "Retour à l'appartement", flat_path(@note.flat_user.flat) %>

@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+  days: "jours"
+  day: "jour"
+  minute: "minute"
+  minutes: "minutes"

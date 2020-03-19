@@ -5,7 +5,10 @@ class FlatsController < ApplicationController
     @flats = Flat.all
   end
 
-  def show; end
+  def show
+    @events = Event.where('date = ?', "#{Date.today}")
+    @notes = Note.all
+  end
 
   def new
     @flat = Flat.new
