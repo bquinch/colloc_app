@@ -1,0 +1,7 @@
+<%= month_calendar do |date| %>
+  <%= link_to flat_day_path(@flat, date) do %>
+    <p><%= "#{date}" %></p>
+    <% day_events = Event.where('date = ?', "#{date.to_date}") %>
+    <p><%= day_events.count if day_events.count > 0 %></p>
+  <% end %>
+<% end %>

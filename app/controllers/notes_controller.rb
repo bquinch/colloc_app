@@ -1,4 +1,9 @@
 class NotesController < ApplicationController
+def index
+  @flat = current_user.flat_user.flat
+  @notes = Note.joins(:flat_user).where("flat_users.flat_id = ?", "#{@flat.id}")
+end
+
   def show
     @note = Note.find(params[:id])
     @note_answer = NoteAnswer.new

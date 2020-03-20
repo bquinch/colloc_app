@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %I[index show]
   resources :flats do
+    get 'calendar', to: 'pages#calendar'
     get 'day', to: 'pages#day'
     resources :flat_users, only: %I[index]
   end
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
     resources :participations, only: :create
   end
   resources :participations, only: :destroy
-  resources :notes, only: %I[show new edit create update destroy] do
+  resources :notes, only: %I[index show new edit create update destroy] do
     resources :note_answers, only: :create
   end
 
