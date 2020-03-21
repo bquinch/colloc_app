@@ -4,6 +4,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name,
+                hint: t(".leave_blank_if_you_don_t_want_to_change_it"),
+                required: false,
+                input_html: { autocomplete: "Modifier Prénom" } %>
+    <%= f.input :last_name,
+                hint: t(".leave_blank_if_you_don_t_want_to_change_it"),
+                required: false,
+                input_html: { autocomplete: "Modifier Prénom" } %>
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -21,6 +29,12 @@
                 hint: t(".we_need_your_current_password_to_confirm_your_changes"),
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :photo, as: :file,
+                required: false,
+                input_html: { autocomplete: "Votre photo", class: 'd-none', id: 'browse' },
+                label_html: { class: 'btn-colloc-primary'},
+                label: '📷 Modifier ma photo' %>
+  <div id="preview" class='mb-2'></div>
   </div>
 
   <div class="form-actions">

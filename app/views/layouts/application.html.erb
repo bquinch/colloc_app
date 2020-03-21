@@ -14,7 +14,8 @@
     <div class="container">
       <%= yield %>
     </div>
-    <% unless current_page?(root_url) %>
+    <% unless current_page?(root_url) ||
+      current_page?(new_flat_user_path)%>
       <%= render 'shared/navbar' %>
     <% end %>
     <%= javascript_include_tag 'application' %>
