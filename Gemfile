@@ -9,18 +9,19 @@ gem 'puma'
 gem 'rails', '5.2.4'
 gem 'redis'
 gem "simple_calendar", "~> 2.0"
+gem 'faker'
+gem 'cloudinary'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.12.0'
+
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
-gem 'factory_bot'
+gem "factory_bot_rails"
 gem 'rails-i18n'
 gem 'devise-i18n'
-
-gem 'rspec-rails', group: [ :test ]
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -33,4 +34,6 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 4.0.0.rc1'
 end

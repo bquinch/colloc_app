@@ -7,7 +7,7 @@ class FlatsController < ApplicationController
 
   def show
     @events = Event.where('date = ?', "#{Date.today}")
-    @notes = Note.all
+    @notes = Note.joins(:flat_user).where("flat_users.flat_id = ?", "#{@flat.id}")
   end
 
   def new
