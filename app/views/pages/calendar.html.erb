@@ -1,7 +1,13 @@
-<%= month_calendar do |date| %>
-  <%= link_to flat_day_path(@flat, date) do %>
-    <p><%= "#{date}" %></p>
-    <% day_events = Event.where('date = ?', "#{date.to_date}") %>
-    <p><%= day_events.count if day_events.count > 0 %></p>
+<div class="calendar">
+  <%= month_calendar do |date| %>
+    <%= link_to flat_day_path(@flat, date) do %>
+      <p class='mb-2'><%= date.day %></p>
+      <% day_events = Event.where('date = ?', "#{date.to_date}") %>
+      <% if day_events.count > 0 %>
+        <div class='events-day-count'>
+          <%= day_events.count %>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

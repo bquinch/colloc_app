@@ -1,40 +1,26 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to flat_path(current_user.flat), class: "nav-link" do %>
-              <i class="fas fa-home"></i>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to flat_calendar_path(current_user.flat), class: "nav-link" do %>
-              <i class="fas fa-calendar-alt"></i>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to notes_path, class: "nav-link" do %>
-              <i class="fas fa-envelope-open-text"></i>
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to user_path(current_user), class: "nav-link" do %>
-              <i class="fas fa-user-circle"></i>
-            <% end %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to new_user_session_path, class: "nav-link" do %>
-              <i class="fas fa-user-circle"></i>
-            <% end %>
-          </li>
+<div class="navbar navbar-light navbar-lewagon">
+  <ul class="navbar-nav flex-row m-auto">
+    <% if user_signed_in? %>
+      <li class="nav-item <%= "active" if current_page?(flat_path(current_user.flat)) %>">
+        <%= link_to flat_path(current_user.flat), class: "nav-link" do %>
+          <i class="fas fa-home"></i>
         <% end %>
-      </ul>
-    </div>
-  </div>
+      </li>
+      <li class="nav-item <%= "active" if current_page?(flat_calendar_path(current_user.flat)) %>">
+        <%= link_to flat_calendar_path(current_user.flat), class: "nav-link" do %>
+          <i class="fas fa-calendar-alt"></i>
+        <% end %>
+      </li>
+      <li class="nav-item <%= "active" if current_page?(notes_path) %>">
+        <%= link_to notes_path, class: "nav-link" do %>
+          <i class="fas fa-envelope-open-text"></i>
+        <% end %>
+      </li>
+      <li class="nav-item <%= "active" if current_page?(user_path(current_user)) %>">
+        <%= link_to user_path(current_user), class: "nav-link" do %>
+          <i class="fas fa-user-circle"></i>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 </div>

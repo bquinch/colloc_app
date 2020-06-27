@@ -1,0 +1,116 @@
+.simple-calendar {
+  width: 100%;
+
+  .day {
+    border-left: none;
+    border-right: none;
+    height: 4rem;
+    max-height: 4rem;
+    padding: 0px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+  }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {
+    background: $blue !important;
+  }
+  .past {
+    background: #DDD;
+  }
+  .future {
+    background: $light-gray;
+  }
+
+  .start-date {}
+
+  .prev-month {
+    background: $light-violet;
+  }
+  .next-month {
+    background: $light-violet;
+  }
+  .current-month {
+    p {
+      color: #333;
+    }
+  }
+
+  .has-events {}
+
+  p {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+  }
+
+  .calendar-title {
+    margin: 1rem;
+    font-weight: bold;
+  }
+
+  .calendar-heading {
+    text-align: center;
+    margin: 1rem;
+  }
+
+  th {
+    text-align: center;
+    border: none;
+    background: $violet;
+    color: $light-gray;
+    border-bottom: none;
+
+    &:first-child {
+      border-radius: 10px 0px 0px 0px;
+    }
+
+    &:last-child {
+      border-radius: 0px 10px 0px 0px;
+    }
+  }
+
+  tr:last-child {
+
+    td:first-child {
+      border-radius: 0px 0px 0px 10px;
+    }
+
+    td:last-child {
+      border-radius: 0px 0px 10px 0px;
+    }
+  }
+
+  table {
+    border: none;
+  }
+}
+
+.calendar {
+  height: calc(100% - 66px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.events-day-count {
+  background: $yellow;
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+  text-align: center;
+  color: $light-gray;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}

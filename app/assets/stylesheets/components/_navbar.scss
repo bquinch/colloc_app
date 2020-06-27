@@ -1,20 +1,11 @@
 .navbar-lewagon {
-  justify-content: center;
-  background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+  background: $light-gray;
 }
 
 .navbar {
   position: fixed;
   bottom: 0;
   width: 100%;
-
-  .container {
-    justify-content: space-around;
-  }
 
   i {
     width: 4rem;
@@ -23,5 +14,7 @@
 }
 
 .navbar-nav {
-  justify-content: center !important;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

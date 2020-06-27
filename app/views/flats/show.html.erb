@@ -1,26 +1,29 @@
-<h1><%= @flat.title %></h1>
-<p><%= @flat.description %></p>
-<p><%= @flat.address %></p>
-<p><%= @flat.flat_code %></p>
-<p>-------------</p>
-<h1>Évènements du jour</h1>
-<p>-------------</p>
-<% @events.each do |event| %>
-  <%= link_to event_path(event) do %>
-    <p><%= event.title %></p>
-  <% end %>
-<% end %>
-<p>-------------</p>
-<p><%= link_to 'Nouvel évènement', new_event_path %></p>
-<p>-------------</p>
-<h1>Notes</h1>
-<p>-------------</p>
-<% @notes.each do |note| %>
-  <%= link_to note_path(note) do %>
-    <p><%= note.content.truncate(40) %></p>
-  <% end %>
-<% end %>
-<p>-------------</p>
-<p><%= link_to 'Nouvelle note', new_note_path %></p>
-<p>-------------</p>
-<p><%= link_to 'Home', root_url %></p>
+<div class="flat-container text-center d-flex align-items-center justify-content-center flex-column">
+  <div class="flat-header-card">
+    <h1><%= @flat.title %></h1>
+    <p><%= @flat.description %></p>
+    <p><%= @flat.address %></p>
+    <p><%= @flat.flat_code %></p>
+  </div>
+  <div class="event-list-card py-3 mb-3">
+    <h1>Évènements du jour</h1>
+    <% if @events.empty? %>
+      <p>Aucun évènement ce jour</p>
+    <% end %>
+    <% @events.each_with_index do |event, i| %>
+      <%= link_to event_path(event) do %>
+        <p class='event-card mb-0 <%= COLORS[i % COLORS.length] %>'><%= event.title %></p>
+      <% end %>
+    <% end %>
+    <p class='mb-0 mt-3'><%= link_to 'Nouvel évènement', new_event_path %></p>
+  </div>
+  <div class="note-list-card py-3">
+    <h1>Notes</h1>
+    <% @notes.each_with_index do |note, i| %>
+      <%= link_to note_path(note) do %>
+        <p class='note-card mb-0 <%= COLORS[i % COLORS.length] %>'><%= note.content.truncate(40) %></p>
+      <% end %>
+    <% end %>
+    <p class='mb-0 mt-3'><%= link_to 'Nouvelle note', new_note_path %></p>
+  </div>
+</div>

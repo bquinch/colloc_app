@@ -1,0 +1,26 @@
+.event-list-card,
+.note-list-card {
+  width: 100vw;
+  background: linear-gradient(45deg, rgba(255,255,255,0.89), rgba(255,255,255,1));
+  box-shadow: 0px 4px 16px rgba(0,0,0,0.2);
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.event-card,
+.note-card {
+  width: 100%;
+  color: $light-gray;
+}
+
+.violet {
+  background: $violet;
+}
+
+.blue {
+  background: $blue;
+}
+
+.orange {
+  background: $yellow;
+}
